@@ -3,8 +3,7 @@ package buu.informatics.s59160143.dicroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.ImageView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener { rollDice() }
 
-        val resultText: TextView = findViewById(R.id.result_text)
-        resultText.text = "Dice Rolled!"
+
+
 
         val resetButton: Button = findViewById(R.id.reset_button)
         resetButton.setOnClickListener { setReset() }
@@ -25,14 +24,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDice() {
         val randomInt = Random().nextInt(6 + 1)
-        val resultText: TextView = findViewById(R.id.result_text)
-        resultText.text = randomInt.toString()
-         Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
+        val diceImage: ImageView = findViewById(R.id.dice_image)
+        val drawableResource = when (randomInt) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+         diceImage.setImageResource(drawableResource)
     }
     private fun setReset() {
-        val setInt = 0
-        val resultText: TextView = findViewById(R.id.result_text)
-        resultText.text = setInt.toString()
-        Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
+
     }
 }
